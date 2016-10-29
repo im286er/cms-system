@@ -1,0 +1,30 @@
+{include file='index/header' /}
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-9">
+	   <div class="news-list">
+		{volist name="result['listNews']" id="vo"}
+          <dl>
+            <a target='_blank' href='/home/index/detail?id={$vo.news_id}'><dt>{$vo.title}</dt></a>
+            <dd class="news-img">
+             <a target='_blank' href='/home/index/detail?id={$vo.news_id}'> <img src="{$vo.thumb}" height="120" width="200" alt=""></a>
+            </dd>
+            <dd class="news-intro">
+              {$vo.description}
+            </dd>
+            <dd class="news-info">
+              {$vo.keywords} <span>{$vo.create_time|date="Y-m-d H:i:s", ###}</span> 阅读(0)
+            </dd>
+          </dl>
+         {/volist}
+       {$page}
+  
+		</div>
+	   </div>
+	    {include file='index/right' /}
+	</div>
+  </div>
+</section>
+</body>
+</html>

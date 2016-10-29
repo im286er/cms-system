@@ -1,0 +1,101 @@
+
+{include file="index/header" /}
+<body>
+
+<div id="wrapper">
+
+    {include file="index/nav"/}
+
+    <div id="page-wrapper">
+
+    <div class="container-fluid" >
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+
+                <ol class="breadcrumb">
+                    <li>
+                        <i class="fa fa-dashboard"></i>  <a href="/admin/position">推荐位管理</a>
+                    </li>
+                    <li class="active">
+                        <i class="fa fa-table"></i>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+     
+        <div>
+          <button  id="button-add" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>添加 </button>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <h3></h3>
+                <div class="table-responsive">
+                    <form id="singcms-listorder">
+                    <table class="table table-bordered table-hover singcms-table">
+                        <thead>
+                        <tr>
+                        
+                            <th>id</th>
+                            <th>推荐位名称</th>
+                            <th>时间</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                         {volist name="positions" id="pid"}
+                            <tr>                                                         
+                                <td>{$pid.id}</td>
+                                <td>{$pid.name}</td>
+                                <td>{$pid.create_time|date="Y-m-d H:i",###}</td>
+                                <td>{$pid.status|status}</td>
+                                <td><span class="glyphicon glyphicon-edit" aria-hidden="true" id="singcms-edit" attr-id="{$pid.id}"></span>    <a href="javascript:void(0)" attr-id="{$pid.id}" id="singcms-delete"  attr-a="menu" attr-message="删除"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></td>
+                            </tr>
+                        {/volist}
+						
+                        </tbody>
+                    </table>
+				
+                    </form>
+                    <nav>
+                        <ul class="pagination">
+                           {$page} 
+                        </ul>
+                    </nav>
+                  
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+<!-- Morris Charts JavaScript -->
+<script>
+
+    var SCOPE = {
+        'add_url' : '/admin/position/add',
+        'edit_url' : '/admin/position/edit',
+        'set_status_url' : '/admin/position/setStatus',
+        'listorder_url' : '/admin/menu/listorder',
+
+    }
+</script>
+{include file="index/footer" /}
+
+
+
+
+
